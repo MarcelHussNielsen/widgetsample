@@ -1,0 +1,23 @@
+{
+  "name": "trustpilotwidget",
+  "version": "1.0.0",
+  "description": "trustpilot widget code challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/anderssim/widgetsample.git"
+  },
+  "keywords": [
+    "widget",
+    "trustpilot"
+  ],
+  "author": "Anders Simonsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anderssim/widgetsample/issues"
+  },
+  "homepage": "https://github.com/anderssim/widgetsample#readme"
+}

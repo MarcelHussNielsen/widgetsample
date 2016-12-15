@@ -1,0 +1,25 @@
+{
+  "name": "trustpilotwidget",
+  "description": "trustpilot widget code challenge",
+  "main": "index.js",
+  "authors": [
+    "Anders Simonsen"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "widget",
+    "trustpilot"
+  ],
+  "homepage": "https://github.com/anderssim/widgetsample",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "canvasspinner": "*",
+    "hidpi-canvas": "^1.0.10"
+  }
+}

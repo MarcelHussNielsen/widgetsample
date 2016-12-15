@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/anderssim/widgetsample.git"
+    "url": "git@github.com/anderssim/widgetsample.git"
   },
   "keywords": [
     "widget",
@@ -19,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/anderssim/widgetsample/issues"
   },
-  "homepage": "https://github.com/anderssim/widgetsample#readme"
+  "homepage": "https://github.com/anderssim/widgetsample#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.11",
+    "sass": "^0.5.0"
+  }
 }

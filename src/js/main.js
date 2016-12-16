@@ -1,84 +1,58 @@
 window.onload = function() {
 
-    var  mousePoint = {
-        x: 0,
-        y: 0
-    };
-    var stars = [];
+    var dataPoints = [];
 
-    var colorMatrix =[];
+    init();
 
-    switch (utils.randomInt(0, 4)) {
-        case 0 :
-            colorMatrix = [0 , 5, 5, 5, 5];
-            break;
-        case 1 :
-            colorMatrix = [1 , 1, 5, 5, 5];
-            break;
-        case 2 :
-            colorMatrix = [2 , 2, 2, 5, 5];
-            break;
-        case 3 :
-            colorMatrix = [3 , 3, 3, 3, 5];
-            break;
-        case 4 :
-            colorMatrix = [4 , 4, 4, 4, 4];
-            break;
+    function init() {
+        var averageRating = createReviews();
+        rating(averageRating);
+        graph(dataPoints);
+        arrows();
     }
 
-    ratings();
-    function ratings() {
+    function createReviews() {
+        badReviews();
+        mediumReviews();
+        goodReviews();
+        return evalutateReviews();
+    }
+
+
+    function badReviews() {
         for (var i = 0; i < 5; i++) {
-            var status = colorMatrix[i];
-            new star(i, status)
+            dataPoints.push(utils.randomInt(0, 3))
         }
     }
 
-    document.body.addEventListener("mousemove", function(event) {
-        mousePoint.x = event.clientX ;
-        mousePoint.y = event.clientY;
-        stars = [];
+    function mediumReviews() {
+        for (var i = 0; i < 25; i++) {
+            dataPoints.push(utils.randomInt(2, 4))
 
-        for (var i = 0; i < 5; i++) {
-            var starPosition = {
-                coords : document.getElementById('star_' + i).getBoundingClientRect(),
-                id : 'star_' + i
-            };
-            stars.push(starPosition);
-        }
-        checkForMouseContact(stars, mousePoint);
-    });
-
-    function checkForMouseContact(stars, mousePoint) {
-        for (var i = 0; i < 5; i++) {
-            if (mousePoint.x > stars[i].coords.left && mousePoint.x < stars[i].coords.right && mousePoint.y > stars[i].coords.top && mousePoint.y < stars[i].coords.bottom) {
-                starChangeColor('star_' + i, i);
-            } else {
-                // showAverageRating();
-            }
         }
     }
 
-    function starChangeColor(star, int) {
-        document.getElementById('rating').innerHTML = '';
-        switch (int) {
-            case 0 :
-                colorMatrix = [0 , 5, 5, 5, 5];
-                break;
-            case 1 :
-                colorMatrix = [1 , 1, 5, 5, 5];
-                break;
-            case 2 :
-                colorMatrix = [2 , 2, 2, 5, 5];
-                break;
-            case 3 :
-                colorMatrix = [3 , 3, 3, 3, 5];
-                break;
-            case 4 :
-                colorMatrix = [4 , 4, 4, 4, 4];
-                break;
+    function goodReviews() {
+        for (var i = 0; i < 20; i++) {
+            dataPoints.push(utils.randomInt(3, 4))
         }
-        ratings();
     }
+
+    function evalutateReviews() {
+        var totalSum = 0;
+        for (var k = 0; k < dataPoints.length; k++) {
+            totalSum += dataPoints[k];
+
+        }
+        return totalSum;
+    }
+
+
+
+
+
+
+
+
 
 };

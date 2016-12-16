@@ -45,8 +45,6 @@ var star = (function(int, status){
         }
     ];
 
-
-
     var ratio = null;
     var particles = [];
 
@@ -62,7 +60,6 @@ var star = (function(int, status){
     function setEnviroment(int) {
         canvas = document.createElement("canvas");
         canvas.id = "star_" + int;
-        canvas.class = 'rating-star';
         document.getElementById('rating').appendChild(canvas);
         context = canvas.getContext('2d');
         retinaDimensions();
@@ -82,16 +79,11 @@ var star = (function(int, status){
         particles = createParticlesArray(numberOfPaticles, width, height, radius, angle);
     }
 
-
-
-
-
     function clearCanvas() {
         context.clearRect(0, 0, width, height);
         render();
         requestAnimationFrame(clearCanvas);
     }
-
 
     function render() {
         context.save();
@@ -99,7 +91,6 @@ var star = (function(int, status){
         var gr = context.createLinearGradient(0, 0, 0, 35);
         gr.addColorStop(0,'rgb('+ colors[counter].light[0] +','+ colors[counter].light[1] +','+ colors[counter].light[2] +')');
         gr.addColorStop(1,'rgb('+ colors[counter].dark[0] +','+ colors[counter].dark[1] +','+ colors[counter].dark[2]  +')');
-
 
         context.beginPath();
         context.moveTo(left2, bottom1);

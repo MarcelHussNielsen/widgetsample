@@ -3,7 +3,9 @@ var graph = (function (ratings) {
         context = null,
         width = null,
         height = null,
-        ratio = null;
+        ratio = null,
+        retina = false,
+        center = 0;
     
     var particles = [];
 
@@ -27,14 +29,18 @@ var graph = (function (ratings) {
         var devicePixelRatio = window.devicePixelRatio || 1,
             backingStoreRatio = context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
         ratio = devicePixelRatio / backingStoreRatio;
-        width = canvas.width = 255 * ratio;
+        if (ratio > 1) {
+            retina = true;
+        }
+        width = canvas.width = 290 * ratio;
         height = canvas.height = 100 * ratio;
         canvas.style.width = width / ratio + 'px';
         canvas.style.height = height / ratio + 'px';
+        context.scale(ratio, ratio);
     }
 
     function createParticles(ratings) {
-        var xPos =  0;
+        var xPos =  20;
         for (var i = 0; i < ratings.length; i++) {
             xPos += 5;
             particles.push(particle.create(xPos, yMultiplier(ratings[i])));
@@ -44,7 +50,12 @@ var graph = (function (ratings) {
 
     function yMultiplier(yPos) {
 
-        var center = height / 2;
+        if (retina) {
+            center = height / 4;
+        } else {
+            center = height / 2;
+        }
+
         switch (yPos) {
             case 0 :
                 return center + 40;
@@ -73,6 +84,14 @@ var graph = (function (ratings) {
     function render() {
         context.save();
 
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(width, 0);
+        context.lineTo(width, height);
+        context.lineTo(0, height);
+        context.lineTo(0, 0);
+        context.fillStyle = '#ffffff';
+        context.fill();
 
 
         for (var i = 0; i < particles.length; i++) {
@@ -86,6 +105,11 @@ var graph = (function (ratings) {
             context.lineWidth = 2.5;
             context.strokeStyle = gradient;
             context.lineCap = 'round';
+            context.stroke();
+
+            context.beginPath();
+            context.arc(particles[i].x, particles[i].y, 5, Math.PI * 2, 0);
+            context.lineWidth = 0.5;
             context.stroke();
         }
 

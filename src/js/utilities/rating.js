@@ -28,7 +28,7 @@ var rating = (function(reviewsRatings){
     }
 
     document.body.addEventListener("mousemove", function(event) {
-        mousePoint.x = event.clientX ;
+        mousePoint.x = event.clientX;
         mousePoint.y = event.clientY;
         stars = [];
 
@@ -39,13 +39,24 @@ var rating = (function(reviewsRatings){
             };
             stars.push(starPosition);
         }
-        checkForMouseContact(stars, mousePoint);
+        checkForMouseContact(mousePoint);
     });
 
-    function checkForMouseContact(stars, mousePoint) {
+    document.body.addEventListener('click', function (event) {
+        mousePoint.x = event.clientX;
+        mousePoint.y = event.clientY;
+        var rating = checkForMouseContact(mousePoint);
+        if (rating) {
+
+            main.createReview(rating);
+        }
+    })
+
+    function checkForMouseContact(mousePoint) {
         for (var i = 0; i < 5; i++) {
             if (mousePoint.x > stars[i].coords.left && mousePoint.x < stars[i].coords.right && mousePoint.y > stars[i].coords.top && mousePoint.y < stars[i].coords.bottom) {
                 starChangeColor(i+1);
+                return 'rating' + i;
             }
         }
     }

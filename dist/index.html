@@ -13,11 +13,26 @@
             <h2 id="average-rating">
 
             </h2>
+            <p>Average <br>rating</p>
         </div>
     </div>
     <div class="container graph-container" >
-        <div id="graph"></div>
+            <p id="caption">
+                The latest 50 ratings
+            </p>
+
+            <div id="graph" class="graph-position"></div>
         <div id="slide-arrow-container" class="arrow-container"></div>
+    </div>
+    <div class="review-container" id="new-review">
+        <h3 class="review-header">Thank you for rating our service!</h3>
+        <p>Please leave us a comment about your experience below.</p>
+        <form action="" id="review-form">
+            <textarea class="textbox" name="review" id="" cols="40" rows="15" placeholder="Write here..."></textarea>
+            <input type="submit" value="Submit review" class="btn">
+        </form>
+
+
     </div>
 </div>
 <script src="js/main.js"></script>

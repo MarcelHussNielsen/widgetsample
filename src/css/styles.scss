@@ -1,13 +1,21 @@
-//$fontFamily = "Helvetica Neue, Arial, Helvetica, sans-serif";
-$font-stack:    Helvetica Neue, Arial, Helvetica, sans-serif;
+
+$font-stack: Helvetica Neue, Arial, Helvetica, sans-serif;
+$fontcolor: #4c4c4c;
 
 html, body {
   margin: 0;
 }
+
+
 .wrapper {
   position: relative;
   margin: auto;
-  width: 280px;
+  width: 310px;
+  
+  p{
+    font-family: $font-stack;
+    color: $fontcolor;
+  }
 
   #star_0 {
     cursor: pointer;
@@ -41,17 +49,34 @@ html, body {
   }
 
   .container {
-
     height: 49px;
-    margin-left: 5px;
     background-color: #f6f6f6;
     border: 1px solid #c6c6c6;
+    position: relative;
+
   }
 
   .graph-container {
     border-top: none;
-    height: 20px;
+    height: 0px;
     transition: all 0.5s ease;
+    padding: 10px;
+    p {
+      font-size: 90%;
+      margin: 0 0 5px 0;
+
+    }
+
+    .graph-mapping{
+      background-color: #fff;
+      text-align: right;
+      position: absolute;
+      width: 60px;
+      height: 100px;
+      p {
+        font-size: 70%;
+      }
+    }
   }
 
   .arrow-container {
@@ -62,8 +87,25 @@ html, body {
     left: calc(50% - 10px);
   }
 
+  .arrow-container-retina {
+    position: absolute;
+    width: 20px;
+    cursor: pointer;
+    bottom: 0;
+    left: calc(50% - 5px);
+  }
+
   .graph-container-expand {
-    height: 200px;
+    height: 140px;
+  }
+
+  #caption {
+    display: none;
+  }
+
+  .graph-position {
+    position: absolute;
+    right: 10px;
   }
 
   #rating {
@@ -75,13 +117,77 @@ html, body {
   h2 {
     font-family: $font-stack;
     font-size: 150%;
-    //font-weight: 700;
-    color: #4c4c4c;
-    position: absolute;
+    color: $fontcolor;
     top: 20px;
     right: 40px;
+    margin: 10px 0 0 0;
+    display: inline-block;
+    margin-right: 5px;
   }
 
+
+
+  .average-score {
+    height: 49px;
+    width: 100px;
+    z-index: 5;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    p {
+      color: $fontcolor;
+      font-size: 60%;
+      font-family: $font-stack;
+      display: inline-block;
+    }
+  }
+
+  .review-container {
+    display: none;
+    position: absolute;
+    left: -290px;
+    top: 30px;
+    width: 264px;
+    background-color: #f6f6f6;
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      cursor: pointer;
+      color: #ffffff;
+      border: 1px solid #cccccc;
+      margin-top: 10px;
+      background: rgb(115,179,67); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(115,179,67,1) 0%, rgba(87,132,59,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top,  rgba(115,179,67,1) 0%,rgba(87,132,59,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom,  rgba(115,179,67,1) 0%,rgba(87,132,59,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#73b343', endColorstr='#57843b',GradientType=0 ); /* IE6-9 */
+    }
+
+    .review-header {
+      font-family: $font-stack;
+      color: $fontcolor;
+      font-size: 100%;
+      margin: 5px 0 5px 0;
+    }
+
+    p {
+      font-family: $font-stack;
+      color: $fontcolor;
+      opacity: 0.8;
+      font-size: 90%;
+    }
+
+    .textbox {
+      border: 1px solid #cccccc;
+      padding: 3px;
+
+    }
+
+  }
 
 }
 

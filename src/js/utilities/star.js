@@ -2,7 +2,8 @@ var star = (function(int, status){
     var canvas = null,
         context = null,
         width = null,
-        height = null;
+        height = null,
+        retina = false;
 
     var radius = 13,
         numberOfPaticles = 5,
@@ -69,10 +70,14 @@ var star = (function(int, status){
         var devicePixelRatio = window.devicePixelRatio || 1,
             backingStoreRatio = context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
         ratio = devicePixelRatio / backingStoreRatio;
+        if (ratio > 1) {
+            retina = true;
+        }
         width = canvas.width = 35 * ratio;
         height = canvas.height = 35 * ratio;
         canvas.style.width = width / ratio + 'px';
         canvas.style.height = height / ratio + 'px';
+        context.scale(ratio,ratio);
     }
 
     function createParticles() {
@@ -82,12 +87,11 @@ var star = (function(int, status){
     function clearCanvas() {
         context.clearRect(0, 0, width, height);
         render();
-        requestAnimationFrame(clearCanvas);
     }
 
     function render() {
         context.save();
-        
+
         var gr = context.createLinearGradient(0, 0, 0, 35);
         gr.addColorStop(0,'rgb('+ colors[counter].light[0] +','+ colors[counter].light[1] +','+ colors[counter].light[2] +')');
         gr.addColorStop(1,'rgb('+ colors[counter].dark[0] +','+ colors[counter].dark[1] +','+ colors[counter].dark[2]  +')');
@@ -124,10 +128,25 @@ var star = (function(int, status){
     }
 
     function coordX(particle) {
-        return particle.x = width / 2 + Math.cos(particle.angleStart) * radius;
+        return particle.x = adjustCoordX() + Math.cos(particle.angleStart) * radius;
+    }
+    function coordY(particle) {
+        return particle.y = adjustCoordY() + Math.sin(particle.angleStart) * radius;
     }
 
-    function coordY(particle) {
-        return particle.y = height / 2 + Math.sin(particle.angleStart) * radius;
+    function adjustCoordX() {
+        if (retina) {
+            return (width + 2) / 4;
+        } else {
+            return width / 2;
+        }
+    }
+
+    function adjustCoordY() {
+        if (retina) {
+            return (height + 2) / 4;
+        } else {
+            return height / 2;
+        }
     }
 });

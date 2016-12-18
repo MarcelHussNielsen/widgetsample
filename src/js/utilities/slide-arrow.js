@@ -14,7 +14,8 @@ var arrows = (function(dataPoints){
         direction = 'up',
         expanded = false,
         wing = 9,
-        center = 12;
+        center = 12,
+        retina = false;
 
     init();
 
@@ -35,10 +36,20 @@ var arrows = (function(dataPoints){
         var devicePixelRatio = window.devicePixelRatio || 1,
             backingStoreRatio = context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
         ratio = devicePixelRatio / backingStoreRatio;
+        if (ratio > 1) {
+            retina = true;
+            addRetinaClass();
+        }
         width = canvas.width = 20 * ratio;
         height = canvas.height = 20 * ratio;
         canvas.style.width = width / ratio + 'px';
         canvas.style.height = height / ratio + 'px';
+        context.scale(ratio, ratio);
+    }
+
+    function addRetinaClass () {
+        var arrow = document.getElementsByClassName('arrow-container');
+        arrow[0].className += ' arrow-container-retina';
     }
 
     document.body.addEventListener("mousemove", function(event) {
@@ -61,6 +72,7 @@ var arrows = (function(dataPoints){
                 }, 500);
             } else {
                 expanded = false;
+                document.getElementById('graph').innerHTML = '';
                 graphcontainer[0].classList.remove('graph-container-expand');
             }
         }
@@ -88,16 +100,23 @@ var arrows = (function(dataPoints){
         context.save();
 
         context.beginPath();
-        context.moveTo(width / 2 - 5, wing);
-        context.lineTo(width / 2, center);
-        context.lineTo(width / 2 + 5, wing);
+        context.moveTo(ajdustCoordX() - 5, wing);
+        context.lineTo(ajdustCoordX(), center);
+        context.lineTo(ajdustCoordX() + 5, wing);
         context.strokeStyle = '#adadad';
         context.lineWidth = strokewidth;
         context.lineCap = 'round';
         context.stroke();
 
-
         context.restore();
+    }
+    
+    function ajdustCoordX() {
+        if (retina) {
+            return width / 4;
+        } else {
+            return width / 2;
+        }
     }
 
     function expand() {
@@ -117,8 +136,6 @@ var arrows = (function(dataPoints){
             },500)
         }
     }
-
-
 
     function hoverState() {
         if (hover) {
@@ -142,7 +159,5 @@ var arrows = (function(dataPoints){
             }
         }
     }
-
-
 
 });

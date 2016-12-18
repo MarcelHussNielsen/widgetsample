@@ -6,8 +6,6 @@ window.onload = function() {
 var main = (function(){
     var dataPoints = [];
 
-    // init();
-
     function init() {
         var averageRating = createReviews();
         rating(averageRating);
@@ -15,7 +13,12 @@ var main = (function(){
     }
 
     function showGraphs(dataPoints) {
+        document.getElementById('caption').style.display = 'block';
         graph(dataPoints);
+    }
+
+    function createReview() {
+        document.getElementById('new-review').style.display = 'block';
     }
 
     function createReviews() {
@@ -56,7 +59,8 @@ var main = (function(){
 
     return {
         init : init,
-        showGraphs : showGraphs
+        showGraphs : showGraphs,
+        createReview : createReview
     }
 
 

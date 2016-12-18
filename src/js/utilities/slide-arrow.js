@@ -73,6 +73,7 @@ var arrows = (function(dataPoints){
             } else {
                 expanded = false;
                 document.getElementById('graph').innerHTML = '';
+                document.getElementById('caption').style.display = 'none';
                 graphcontainer[0].classList.remove('graph-container-expand');
             }
         }

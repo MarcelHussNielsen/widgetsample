@@ -50,7 +50,7 @@ var rating = (function(reviewsRatings){
 
             main.createReview(rating);
         }
-    })
+    });
 
     function checkForMouseContact(mousePoint) {
         for (var i = 0; i < 5; i++) {

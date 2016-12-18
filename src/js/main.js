@@ -21,6 +21,10 @@ var main = (function(){
         document.getElementById('new-review').style.display = 'block';
     }
 
+    function showReview(number) {
+
+    }
+
     function createReviews() {
         badReviews();
         mediumReviews();
@@ -38,7 +42,6 @@ var main = (function(){
     function mediumReviews() {
         for (var i = 0; i < 25; i++) {
             dataPoints.push(utils.randomInt(2, 4))
-
         }
     }
 
@@ -60,7 +63,8 @@ var main = (function(){
     return {
         init : init,
         showGraphs : showGraphs,
-        createReview : createReview
+        createReview : createReview,
+        showReview : showReview
     }
 
 

@@ -37,7 +37,7 @@ html, body {
 
   .logo {
     margin-right: 23px;
-    margin-top: 4px;
+    margin-top: 5px;
     position: relative;
     left: 20px;
   }
@@ -46,6 +46,8 @@ html, body {
     background-color: #fff;
     height: 30px;
     margin-top: 30px;
+    border: 1px solid #ccc;
+    border-bottom: none;
   }
 
   .container {
@@ -145,13 +147,12 @@ html, body {
 
   .review-container {
     display: none;
-    position: absolute;
-    left: -290px;
     top: 30px;
-    width: 264px;
+
     background-color: #f6f6f6;
     border: 1px solid #c6c6c6;
     padding: 10px;
+    border-top: none;
 
     .btn {
       width: 100%;
@@ -184,7 +185,7 @@ html, body {
     .textbox {
       border: 1px solid #cccccc;
       padding: 3px;
-
+      width: 100%;
     }
 
   }

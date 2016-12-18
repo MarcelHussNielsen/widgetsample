@@ -1,4 +1,4 @@
-var arrows = (function(){
+var arrows = (function(dataPoints){
     var canvas = null,
         context = null,
         width = null,
@@ -56,6 +56,9 @@ var arrows = (function(){
             if (!expanded) {
                 expanded = true;
                 graphcontainer[0].className += " graph-container-expand";
+                setTimeout(function () {
+                    main.showGraphs(dataPoints);
+                }, 500);
             } else {
                 expanded = false;
                 graphcontainer[0].classList.remove('graph-container-expand');
@@ -103,7 +106,6 @@ var arrows = (function(){
                 if (wing < 12) {
                     wing += 0.3;
                     center -= 0.3;
-
                 }
             },500);
         } else {
@@ -115,6 +117,8 @@ var arrows = (function(){
             },500)
         }
     }
+
+
 
     function hoverState() {
         if (hover) {

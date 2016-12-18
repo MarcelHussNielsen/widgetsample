@@ -9,80 +9,79 @@ html, body {
   margin: auto;
   width: 280px;
 
-#star_0 {
-  cursor: pointer;
+  #star_0 {
+    cursor: pointer;
+  }
+
+  #star_1 {
+    cursor: pointer;
+  }
+
+  #star_2 {
+    cursor: pointer;
+  }
+  #star_3 {
+    cursor: pointer;
+  }
+  #star_4 {
+    cursor: pointer;
+  }
+
+  .logo {
+    margin-right: 23px;
+    margin-top: 4px;
+    position: relative;
+    left: 20px;
+  }
+
+  .logo-container {
+    background-color: #fff;
+    height: 30px;
+    margin-top: 30px;
+  }
+
+  .container {
+
+    height: 49px;
+    margin-left: 5px;
+    background-color: #f6f6f6;
+    border: 1px solid #c6c6c6;
+  }
+
+  .graph-container {
+    border-top: none;
+    height: 20px;
+    transition: all 0.5s ease;
+  }
+
+  .arrow-container {
+    position: absolute;
+    width: 20px;
+    cursor: pointer;
+    bottom: 0;
+    left: calc(50% - 10px);
+  }
+
+  .graph-container-expand {
+    height: 200px;
+  }
+
+  #rating {
+    margin-left: 10px;
+    top: 6px;
+    position: relative;
+  }
+
+  h2 {
+    font-family: $font-stack;
+    font-size: 150%;
+    //font-weight: 700;
+    color: #4c4c4c;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+
+
 }
 
-#star_1 {
-  cursor: pointer;
-}
-
-#star_2 {
-  cursor: pointer;
-}
-#star_3 {
-  cursor: pointer;
-}
-#star_4 {
-  cursor: pointer;
-}
-
-.logo {
-  margin-right: 23px;
-  margin-top: 4px;
-  position: relative;
-  left: 20px;
-}
-
-.logo-container {
-  background-color: #fff;
-  height: 30px;
-  margin-top: 30px;
-}
-
-.container {
-
-  height: 49px;
-  margin-left: 5px;
-  background-color: #f6f6f6;
-  border: 1px solid #c6c6c6;
-}
-
-.graph-container {
-  border-top: none;
-  height: 20px;
-  transition: all 0.5s ease;
-}
-
-.arrow-container {
-  position: absolute;
-  width: 20px;
-  cursor: pointer;
-  bottom: 0;
-  left: calc(50% - 10px);
-}
-
-.graph-container-expand {
-  height: 200px;
-}
-
-
-
-
-}
-
-#rating {
-  margin-left: 10px;
-  top: 6px;
-  position: relative;
-}
-
-h2 {
-  font-family: $font-stack;
-  font-size: 150%;
-  //font-weight: 700;
-  color: #4c4c4c;
-  position: absolute;
-  top: 20px;
-  right: 40px;
-}

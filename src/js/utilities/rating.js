@@ -51,7 +51,6 @@ var rating = (function(reviewsRatings){
     }
 
     function starChangeColor(int) {
-        console.log(int, 'int');
         switch (int) {
             case 1 :
                 colorMatrix = [0 , 5, 5, 5, 5];

@@ -1,14 +1,21 @@
-window.onload = function() {
 
+window.onload = function() {
+    main.init();
+};
+
+var main = (function(){
     var dataPoints = [];
 
-    init();
+    // init();
 
     function init() {
         var averageRating = createReviews();
         rating(averageRating);
+        arrows(dataPoints);
+    }
+
+    function showGraphs(dataPoints) {
         graph(dataPoints);
-        arrows();
     }
 
     function createReviews() {
@@ -47,12 +54,13 @@ window.onload = function() {
         return totalSum;
     }
 
+    return {
+        init : init,
+        showGraphs : showGraphs
+    }
+
+
+}(window));
 
 
 
-
-
-
-
-
-};

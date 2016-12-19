@@ -11,7 +11,9 @@ var graph = (function (ratings) {
         y: 0
         },
         hover = false,
-        thisDataPoint = null;
+        thisDataPoint = null,
+        hoverRadius = 0,
+        hoverStrokeWidth = 0;
     
     var particles = [];
 
@@ -97,23 +99,27 @@ var graph = (function (ratings) {
             baseCoords = baseCoords.getBoundingClientRect();
             main.showReview(checkForMouseContactWithDatapoint(mousePoint, baseCoords));
         }
+
     });
 
     function checkForMouseContactWithCanvas(mousePoint, baseCoords) {
         if (mousePoint.x > baseCoords.left && mousePoint.x < baseCoords.right && mousePoint.y > baseCoords.top && mousePoint.y < baseCoords.bottom) {
             checkForMouseContactWithDatapoint(mousePoint, baseCoords);
         } else {
-            hover = false;
+
         }
     }
 
     function checkForMouseContactWithDatapoint(mousePoint, baseCoords) {
-        var modifier = 3;
+        var modifier = 6;
         for (var i = 0; i < particles.length; i++) {
             if (mousePoint.x > baseCoords.left + particles[i].x - modifier && mousePoint.x < baseCoords.left + particles[i].x + modifier && mousePoint.y > baseCoords.top + particles[i].y - modifier && mousePoint.y < baseCoords.top + particles[i].y + modifier) {
                 hover = true;
                 thisDataPoint = i;
                 return i;
+
+            } else {
+                hover = false;
             }
         }
     }
@@ -123,8 +129,8 @@ var graph = (function (ratings) {
         render();
         requestAnimationFrame(clearCanvas);
     }
-
     function render() {
+
         context.save();
 
         context.beginPath();
@@ -149,12 +155,18 @@ var graph = (function (ratings) {
                     context.beginPath();
                     context.moveTo(particles[i].x, particles[i].y);
                     context.arc(particles[i].x, particles[i].y, 5, Math.PI * 2, 0);
-                    context.strokeStyle = gradient;
-                    context.lineWidth = 1.5;
+                    if (i === 0) {
+                        context.strokeStyle = 'rgb('+ getColor(particles[i]) +')';
+                    } else {
+                        context.strokeStyle = gradient;
+                    }
+                    context.lineWidth = 5;
+                    context.globalAlpha = 0.5;
                     context.stroke();
                 }
             }
 
+            context.globalAlpha = 1;
             context.beginPath();
             context.moveTo(particles[i].x, particles[i].y);
             context.lineTo(particles[previousParticle(i)].x, particles[previousParticle(i)].y);
@@ -165,7 +177,24 @@ var graph = (function (ratings) {
         }
         context.restore();
     }
-    
+
+    var speed = 0.5;
+    function animateHoverRadius() {
+        if (hoverRadius >= 5) {
+            return hoverRadius;
+        } else {
+            return hoverRadius += speed;
+        }
+    }
+
+    function animatHoverStroke() {
+        if (hoverStrokeWidth >= 5) {
+            return hoverStrokeWidth;
+        } else {
+            return hoverStrokeWidth += speed;
+        }
+    }
+
     function getColor(particle) {
         switch (particle.rating) {
             case 0 :

@@ -17,12 +17,13 @@ var main = (function(){
         graph(dataPoints);
     }
 
-    function createReview() {
+    function createReview(rating) {
+        console.log(rating);
         document.getElementById('new-review').style.display = 'block';
     }
 
     function showReview(number) {
-
+        console.log(number);
     }
 
     function createReviews() {

@@ -1,0 +1,3 @@
+var events = (function () {
+
+}(window));

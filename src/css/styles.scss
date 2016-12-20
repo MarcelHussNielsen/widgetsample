@@ -37,14 +37,14 @@ html, body {
 
   .logo {
     margin-right: 23px;
-    margin-top: 5px;
+    margin-top: 8px;
     position: relative;
-    left: 20px;
+    left: 14px;
   }
 
   .logo-container {
     background-color: #fff;
-    height: 30px;
+    height: 35px;
     margin-top: 30px;
     border: 1px solid #ccc;
     border-bottom: none;
@@ -184,8 +184,13 @@ html, body {
 
     .textbox {
       border: 1px solid #cccccc;
-      padding: 3px;
+      padding: 5px;
       width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .user-picture {
+      border: 1px solid #cccccc;
     }
 
   }

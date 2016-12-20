@@ -20,11 +20,37 @@ var main = (function(){
     function createReview(rating) {
         console.log(rating);
         document.getElementById('new-review').style.display = 'block';
+        document.getElementById('review').style.display = 'none';
     }
 
-    function showReview(number) {
-        console.log(number);
+    function showReview(review) {
+        console.log(review);
+        document.getElementById('review').style.display = 'block';
+        document.getElementById('new-review').style.display = 'none';
+        var reviews = reviewData.getReviews();
+        for (var i = 0; i < reviews.length; i++) {
+             if (reviews[i].starRating === review.rating + 1) {
+                 document.getElementById('review-title').innerHTML = reviews[i].reviewTitle;
+                 document.getElementById('review-body').innerHTML = reviews[i].reviewBody;
+                 document.getElementById('user-name').innerHTML = reviews[i].fullName;
+                 document.getElementById('user-img').src = getImageSource(reviews[i].firstName, reviews[i].lastName);
+             }
+        }
     }
+
+    function getImageSource(firstName, lastName) {
+        var source = firstName + '-' + lastName;
+        if (lastName) {
+            if (firstName === 'Justin') {
+                firstName = 'Jason';
+            }
+            source = 'img/' + firstName + '-' + lastName + '.png';
+        } else {
+            source = 'img/' + firstName + '.png';
+        }
+        return source.toLocaleLowerCase();
+    }
+
 
     function createReviews() {
         badReviews();

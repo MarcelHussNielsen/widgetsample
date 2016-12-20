@@ -97,9 +97,11 @@ var graph = (function (ratings) {
         var baseCoords = document.getElementById('graph_canvas');
         if (baseCoords) {
             baseCoords = baseCoords.getBoundingClientRect();
-            main.showReview(checkForMouseContactWithDatapoint(mousePoint, baseCoords));
+            var review = checkForMouseContactWithDatapoint(mousePoint, baseCoords);
+            if (review) {
+                main.showReview(review);
+            }
         }
-
     });
 
     function checkForMouseContactWithCanvas(mousePoint, baseCoords) {
@@ -116,8 +118,7 @@ var graph = (function (ratings) {
             if (mousePoint.x > baseCoords.left + particles[i].x - modifier && mousePoint.x < baseCoords.left + particles[i].x + modifier && mousePoint.y > baseCoords.top + particles[i].y - modifier && mousePoint.y < baseCoords.top + particles[i].y + modifier) {
                 hover = true;
                 thisDataPoint = i;
-                return i;
-
+                return particles[i];
             } else {
                 hover = false;
             }
